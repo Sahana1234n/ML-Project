@@ -1,6 +1,7 @@
 import os
 import sys
 from dataclasses import dataclass
+import pandas as pd
 
 from catboost import CatBoostRegressor
 from sklearn.ensemble import (
@@ -62,10 +63,10 @@ class ModelTrainer:
             "learning_rate": [0.05, 0.1],
             },
             "Linear Regression": {},
-            "K-Neighbors Classifier": {
+            "K-Neighbors Regressor": {
             "n_neighbors": [3, 5, 7],
             },
-            "XGBClassifier": {
+            "XGBRegressor": {
             "n_estimators": [100, 150],
             "learning_rate": [0.05, 0.1],
         },
@@ -73,7 +74,7 @@ class ModelTrainer:
             "depth": [6, 8],
             "learning_rate": [0.05, 0.1],
         },
-            "AdaBoost Classifier": {
+            "AdaBoost Regressor": {
             "n_estimators": [50, 100],
             "learning_rate": [0.01, 0.1],
         },
@@ -102,6 +103,13 @@ class ModelTrainer:
             )
 
             predicted = best_model.predict(X_test)
+            print("\n All Predictions vs Actual Marks:")
+            results_df = pd.DataFrame({
+            "Predicted Marks": predicted,
+            "Actual Marks": y_test
+            })
+            print(results_df.to_string(index=False))
+            
 
             final_r2_score = r2_score(y_test , predicted)
             return final_r2_score
