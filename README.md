@@ -1,4 +1,14 @@
-📊 Student Marks Predictor – End-to-End Machine Learning Project
+# 🎓 Student Performance Predictor - End-to-End Machine Learning Project
+
+A complete ML pipeline including data ingestion, preprocessing, model training, evaluation, and deployment.
+
+---
+
+## 📸 Demo
+Here’s a screenshot of the output:
+![Student Performance Predictor Output](images/screenshot.png)
+
+---
 
 🚀 Project Overview
 
